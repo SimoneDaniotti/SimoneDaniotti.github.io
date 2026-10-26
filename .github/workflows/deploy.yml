@@ -1,0 +1,87 @@
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 6 * * *'   # daily rebuild, picks up CV edits made in Overleaf
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+
+      # CV: fetch the latest version of the Overleaf project and compile it.
+      # Needs the repository secrets OVERLEAF_TOKEN (a dedicated Overleaf Git token) and OVERLEAF_PROJECT_ID.
+      # Any failure (no secret, compile error, personal data found) keeps the committed public/cv.pdf.
+      - name: Fetch CV from Overleaf
+        id: overleaf
+        continue-on-error: true
+        env:
+          OVERLEAF_TOKEN: ${{ secrets.OVERLEAF_TOKEN }}
+          OVERLEAF_PROJECT_ID: ${{ secrets.OVERLEAF_PROJECT_ID }}
+        run: |
+          if [ -z "$OVERLEAF_TOKEN" ] || [ -z "$OVERLEAF_PROJECT_ID" ]; then
+            echo "Overleaf secrets not set: using committed public/cv.pdf"
+            exit 0
+          fi
+          auth=$(printf 'git:%s' "$OVERLEAF_TOKEN" | base64 -w0)
+          echo "::add-mask::$auth"
+          git -c credential.helper= -c "http.extraHeader=Authorization: Basic $auth" \
+            clone --depth 1 "https://git.overleaf.com/${OVERLEAF_PROJECT_ID}" cv-src
+          rm -rf cv-src/.git   # no credentials or history left on disk for later steps
+          echo "fetched=true" >> "$GITHUB_OUTPUT"
+
+      - name: Compile CV (XeLaTeX)
+        id: compile
+        if: steps.overleaf.outputs.fetched == 'true'
+        continue-on-error: true
+        uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
+        with:
+          root_file: main.tex
+          working_directory: cv-src
+          latexmk_use_xelatex: true
+
+      - name: Check CV for personal data, then use it
+        if: steps.overleaf.outputs.fetched == 'true' && steps.compile.outcome == 'success'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils >/dev/null \
+            || { echo "::warning::poppler not installed: keeping the committed CV"; exit 0; }
+          if ! pdftotext cv-src/main.pdf cv.txt; then
+            echo "::warning::cannot read the compiled CV: keeping the committed CV"; exit 0
+          fi
+          # generic patterns only (no personal values): birth mentions, dd/mm/yyyy dates, phone numbers, email addresses
+          if grep -Eiq 'born|birth|nato il|nata il|geboren|\b(0?[1-9]|[12][0-9]|3[01])[./-](0?[1-9]|1[0-2])[./-](19|20)?[0-9]{2}\b|\+[0-9]{2}[ 0-9]{8,}|gmail|@' cv.txt; then
+            echo "::warning::CV contains personal data (birth date, phone or email): keeping the committed CV"
+          else
+            cp cv-src/main.pdf public/cv.pdf
+            echo "Using the CV compiled from Overleaf"
+          fi
+
+      - uses: withastro/action@56781b97402ce0487b7e61ce2cb960c0e2cc5289 # v3.0.2
+        with:
+          node-version: 22
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
