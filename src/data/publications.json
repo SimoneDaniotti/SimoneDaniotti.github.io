@@ -1,0 +1,289 @@
+[
+ {
+  "year": 2026,
+  "title": "Who is using AI to code? Global diffusion and impact of generative AI",
+  "url": "https://doi.org/10.1126/science.adz9311",
+  "authors": [
+   {
+    "name": "S. Daniotti",
+    "self": true
+   },
+   {
+    "name": "J. Wachs",
+    "self": false
+   },
+   {
+    "name": "X. Feng",
+    "self": false
+   },
+   {
+    "name": "F. Neffke",
+    "self": false
+   }
+  ],
+  "venue": "<i>Science</i> 391 (6787), 831–835",
+  "topics": [
+   "genai",
+   "software",
+   "skills"
+  ],
+  "viz": "code",
+  "vizAttrs": {},
+  "vizLabel": "A scrolling stream of code. A lens follows the pointer and marks the functions written by AI, about 29 in every 100. Arrow keys move the pointer.",
+  "controls": null,
+  "caption": "Inside the lens, AI-written functions light up: about 29 in every 100, the share the classifier measured for US developers. Click to classify the functions under the lens; AI-written ones stay marked.",
+  "links": [
+   {
+    "href": "https://doi.org/10.1126/science.adz9311",
+    "label": "DOI 10.1126/science.adz9311"
+   }
+  ],
+  "status": null,
+  "abstract": [
+   "Generative coding tools promise big productivity gains, but uneven uptake could widen skill and income gaps. We train a neural classifier to spot artificial intelligence (AI)–generated Python functions in more than 30 million GitHub commits by 160,097 software developers, tracking how fast, and where, these tools take hold. Currently, AI writes an estimated 29% of Python functions in the US—a shrinking lead over other countries. We estimate that quarterly output, measured in online code contributions, consequently increased by 3.6%. AI seems to benefit experienced, senior-level developers: They increased productivity and more readily expanded into new domains of software development. By contrast, early-career developers showed no significant benefits from AI adoption. This may widen skill gaps and reshape future career ladders in software development."
+  ]
+ },
+ {
+  "year": 2026,
+  "title": "The changing global division of labor in software: emergence and diffusion of new programming skills across IT hubs",
+  "url": "https://arxiv.org/abs/2606.09463",
+  "authors": [
+   {
+    "name": "J. Wachs",
+    "self": false
+   },
+   {
+    "name": "X. Feng",
+    "self": false
+   },
+   {
+    "name": "S. Daniotti",
+    "self": true
+   },
+   {
+    "name": "F. Neffke",
+    "self": false
+   }
+  ],
+  "venue": "arXiv preprint 2606.09463",
+  "topics": [
+   "software",
+   "skills",
+   "cities"
+  ],
+  "viz": "hubs",
+  "vizAttrs": {},
+  "vizLabel": "IT hubs as clusters of skills. A new programming skill appears in one hub and travels to the others; the pointer picks the hub where it starts. Arrow keys move the pointer.",
+  "controls": null,
+  "caption": "A new skill appears in one hub and travels to the others. Click a hub to start a new skill there and watch it spread; hub sizes and speeds are illustrative.",
+  "links": [
+   {
+    "href": "https://arxiv.org/abs/2606.09463",
+    "label": "arXiv 2606.09463"
+   }
+  ],
+  "status": null,
+  "abstract": [
+   "With the rise of new industries, often new jobs emerge. Evolutionary Economic Geography and in particular Industry Life Cycle perspectives predict that these activities first emerge in a limited number of cities to then diffuse to other locations as job descriptions become more standardized. Here, we focus on a particularly important new industry: software development, an activity that is economically important, quickly changing, and has a pronounced spatial concentration in a small number of global IT hubs. We use an online database of over 60 million questions and answers about problems in software development that yields a longitudinal dataset of 237 software skills. By geo-locating 3 million posting users at regular intervals, we link these skills to cities worldwide. We find that, in spite of its digital nature, the software industry exhibits similar spatial regularities as previously observed in more traditional sectors. First, cities diversify into skills that are related to their existing ones. Second, new skills first emerge in cities with large and diversified software sectors, and later diffuse -- mostly unhindered by geographical distance -- to smaller cities specialized in closely related skills. We find suggestive but limited support for a windows of locational opportunity account: although even brand-new skills still emerge first in cities with strong prior specialization in related skills, concentrations of related activities impact less the emergence of new skills than the diffusion of existing ones."
+  ]
+ },
+ {
+  "year": 2025,
+  "title": "The coherence of US cities",
+  "url": "https://doi.org/10.1073/pnas.2501504122",
+  "authors": [
+   {
+    "name": "S. Daniotti",
+    "self": true
+   },
+   {
+    "name": "M. Hartog",
+    "self": false
+   },
+   {
+    "name": "F. Neffke",
+    "self": false
+   }
+  ],
+  "venue": "<i>PNAS</i> 122 (37), e2501504122",
+  "topics": [
+   "cities"
+  ],
+  "viz": "coherence",
+  "vizAttrs": {
+   "data-city": "detroit"
+  },
+  "vizLabel": "A network of 21 occupations in soft clusters, linked to related jobs. Node size shows each job's share of workers in the chosen city, an illustrative mix. Each draw picks two random workers, highlights the shortest path between their jobs and reports its length; the mean over draws is an illustrative coherence. Arrow keys or Enter draw new pairs.",
+  "controls": "<div class=\"pfig__ctl\" role=\"group\" aria-label=\"Choose a city\">\n                  <button type=\"button\" data-city=\"detroit\" aria-pressed=\"true\">Detroit</button>\n                  <button type=\"button\" data-city=\"hartford\" aria-pressed=\"false\">Hartford</button>\n                  <button type=\"button\" data-city=\"sanjose\" aria-pressed=\"false\">San Jose</button>\n                  <button type=\"button\" data-city=\"fresno\" aria-pressed=\"false\">Fresno</button>\n                  <button type=\"button\" data-city=\"newyork\" aria-pressed=\"false\">New York</button>\n                </div>",
+  "caption": "Pick a city and draw pairs of workers to see how far apart their jobs sit. City mixes are illustrative; a schematic of the measure, not the paper’s data. Click to draw 20 pairs at once and watch the city’s coherence settle.",
+  "links": [
+   {
+    "href": "https://doi.org/10.1073/pnas.2501504122",
+    "label": "DOI 10.1073/pnas.2501504122"
+   }
+  ],
+  "status": null,
+  "abstract": [
+   "Diversified economies are critical for cities to sustain their growth and development, but they are also costly because diversification often requires expanding a city’s capability base. We analyze how cities manage this trade-off by measuring the coherence of the economic activities they support, defined as the technological distance between randomly sampled productive units in a city. We use this framework to study how the US urban system developed over almost two centuries, from 1850 to today. To do so, we rely on historical census data, covering over 600M individual records to describe the economic activities of cities between 1850 and 1940, as well as 8 million patent records and detailed occupational and industrial profiles of cities for more recent decades. Despite massive shifts in the economic geography of the United States over this 170-y period, average coherence in its urban system remains unchanged. Moreover, across different time periods, datasets, and relatedness measures, coherence falls with city size at the exact same rate, pointing to constraints to diversification that are governed by a city’s size in universal ways."
+  ]
+ },
+ {
+  "year": 2025,
+  "title": "The building blocks of software work explain coding careers and language popularity",
+  "url": null,
+  "authors": [
+   {
+    "name": "X. Feng",
+    "self": false
+   },
+   {
+    "name": "J. Wachs",
+    "self": false
+   },
+   {
+    "name": "S. Daniotti",
+    "self": true
+   },
+   {
+    "name": "F. Neffke",
+    "self": false
+   }
+  ],
+  "venue": "Under review at <i>Nature Communications</i>",
+  "topics": [
+   "software",
+   "skills"
+  ],
+  "viz": "blocks",
+  "vizAttrs": {},
+  "vizLabel": "Software work as a grid of building blocks. Blocks along the pointer’s path combine into a career; the most used blocks stay lit. Arrow keys move the pointer.",
+  "controls": null,
+  "caption": "Move across the grid: the blocks you pass combine into a career, and the ones used most stay lit. Click to predict the next job from the blocks you traced; the job mapping is illustrative.",
+  "links": [],
+  "status": "Manuscript under review; no public link yet",
+  "abstract": []
+ },
+ {
+  "year": 2024,
+  "title": "Systemic risk approach to mitigate delay cascading in railway networks",
+  "url": "https://doi.org/10.1038/s44333-024-00012-6",
+  "authors": [
+   {
+    "name": "S. Daniotti",
+    "self": true
+   },
+   {
+    "name": "V.D.P. Servedio",
+    "self": false
+   },
+   {
+    "name": "J. Kager",
+    "self": false
+   },
+   {
+    "name": "A. Robben-Baldauf",
+    "self": false
+   },
+   {
+    "name": "S. Thurner",
+    "self": false
+   }
+  ],
+  "venue": "<i>npj Sustainable Mobility and Transport</i> 1, 15",
+  "topics": [
+   "mobility"
+  ],
+  "viz": "rail",
+  "vizAttrs": {},
+  "vizLabel": "A railway network. Pointing at a station starts a delay that cascades along the lines to neighbouring stations. Arrow keys move the pointer.",
+  "controls": null,
+  "caption": "Point at a station to delay it, and watch the delay cascade along the lines. Click a station to add a short extra service there and replay the same delay.",
+  "links": [
+   {
+    "href": "https://doi.org/10.1038/s44333-024-00012-6",
+    "label": "DOI 10.1038/s44333-024-00012-6"
+   }
+  ],
+  "status": null,
+  "abstract": [
+   "Delay cascades may significantly disrupt the regular operation of public transportation systems. What are the origins and processes involved in delay-spreading in public railway systems? How can delay propagation in national railway systems be efficiently managed with a minimum of effort? With a network-based systemic risk approach, we quantify the impact of trains on the system.This allows us to find which train assignments play the leading roles in transmitting delays to following trains. This identification of weak spots in the system now enables us to effectively reduce delay cascades by adding very few specific short-distance train services. Agent-based simulations validate our results."
+  ]
+ },
+ {
+  "year": 2023,
+  "title": "A maximum entropy approach for the modelling of car-sharing parking dynamics",
+  "url": "https://doi.org/10.1038/s41598-023-30134-9",
+  "authors": [
+   {
+    "name": "S. Daniotti",
+    "self": true
+   },
+   {
+    "name": "B. Monechi",
+    "self": false
+   },
+   {
+    "name": "E. Ubaldi",
+    "self": false
+   }
+  ],
+  "venue": "<i>Scientific Reports</i> 13, 2993",
+  "topics": [
+   "mobility",
+   "cities"
+  ],
+  "viz": "parking",
+  "vizAttrs": {},
+  "vizLabel": "Shared cars moving between city blocks and parking. The pointer sets where demand is, and parked cars gather around it. Arrow keys move the pointer.",
+  "controls": null,
+  "caption": "The pointer is where demand is. Cars choose spots with a maximum-entropy rule, so they gather near it. Click to place a lasting demand hotspot and watch the cars redistribute.",
+  "links": [
+   {
+    "href": "https://doi.org/10.1038/s41598-023-30134-9",
+    "label": "DOI 10.1038/s41598-023-30134-9"
+   }
+  ],
+  "status": null,
+  "abstract": [
+   "The science of cities is a relatively new and interdisciplinary topic aimed at studying and characterizing the collective processes that shape the growth and dynamics of urban populations. Amongst other open problems, the forecast of mobility trends in urban spaces is a lively research topic that aims at assisting the design and implementation of efficient transportation policies and inclusive urban planning. To this end, many Machine-Learning models have been put forward to predict mobility patterns. However, most of them are not interpretable -as they build on complex hidden representations of the system configurations- or do not allow for model inspection, thus limiting our understanding of the underlying mechanisms driving the citizen’s daily routines. Here, we tackle this problem by building a fully interpretable statistical model that, incorporating only the minimum number of constraints, can predict different phenomena arising in the city. Using data on the movements of car-sharing vehicles in several Italian cities, we infer a model using the Maximum Entropy (MaxEnt) principle. The model allows for an accurate spatio-temporal prediction of car-sharing vehicles’ presence in different city areas and, thanks to its simple yet general formulation, to precisely perform anomaly detection (e.g., detect strikes and bad weather conditions from car-sharing data only). We compare the forecasting capabilities of our model with different state-of-the-art models explicitly made for time-series forecasting: SARIMA models and Deep Learning Models. We find that MaxEnt models are highly predictive, outperforming SARIMAs while having similar performances of deep Neural Networks - but with advantages of being more interpretable, more flexibile—i.e., they can be applied to different tasks- and being computationally efficient. Our results show that statistical inference might play a fundamental role in building robust and general models describing urban systems phenomena."
+  ]
+ },
+ {
+  "year": 2018,
+  "title": "Qubit systems subject to unbalanced random telegraph noise: quantum correlations, non-Markovianity and teleportation",
+  "url": "https://doi.org/10.1140/epjd/e2018-90450-x",
+  "authors": [
+   {
+    "name": "S. Daniotti",
+    "self": true
+   },
+   {
+    "name": "C. Benedetti",
+    "self": false
+   },
+   {
+    "name": "M.G.A. Paris",
+    "self": false
+   }
+  ],
+  "venue": "<i>European Physical Journal D</i> 72",
+  "topics": [
+   "physics"
+  ],
+  "viz": "qubit",
+  "vizAttrs": {},
+  "vizLabel": "Two qubits drawn as phase dials, kicked by random telegraph noise. Moving left or right changes how unbalanced the noise is. Arrow keys move the pointer.",
+  "controls": null,
+  "caption": "Move left or right to unbalance the noise. The red line shows how correlated the two phases stay. Click to run a teleportation; fidelity rises as the noise becomes unbalanced (values illustrative).",
+  "links": [
+   {
+    "href": "https://doi.org/10.1140/epjd/e2018-90450-x",
+    "label": "DOI 10.1140/epjd/e2018-90450-x"
+   }
+  ],
+  "status": null,
+  "abstract": [
+   "We address the dynamics of quantum correlations in a two-qubit system subject to unbalanced random telegraph noise (RTN) and discuss in details the similarities and the differences with the balanced case. We also evaluate quantum non-Markovianity of the dynamical map. Finally, we discuss the effects of unbalanced RTN on teleportation, showing that noise imbalance mitigates decoherence and preserves teleportation fidelity."
+  ]
+ }
+]

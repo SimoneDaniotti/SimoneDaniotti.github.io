@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import pubs from '../data/publications.json';
+import topics from '../data/topics.json';
+
+type Author = { name: string; self: boolean };
+type Pub = {
+  year: number; title: string; url: string | null; authors: Author[]; venue: string;
+  topics: string[]; viz: string; vizAttrs: Record<string, string>; vizLabel: string;
+  controls: string | null; caption: string; links: { href: string; label: string }[];
+  status: string | null; abstract: string[];
+};
+const topicNames = topics as Record<string, string>;
+const papers = (pubs as Pub[]).slice().sort((a, b) => b.year - a.year); // stable: same-year order kept from the data file
+const years = [...new Set(papers.map((p) => p.year))];
+const vizScripts = [...new Set(papers.map((p) => p.viz))];
+---
+<Base title="Publications · Simone Daniotti" current="publications"
+  description="Publications by Simone Daniotti, newest first: generative AI and software, the coherence of US cities, railway delay cascades, car-sharing and quantum noise.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1 class="page-head__title" data-rise>Publications</h1>
+      <div class="topics" role="group" aria-label="Filter by topic" hidden>
+        <button type="button" data-topic="all" aria-pressed="true">All</button>
+        {Object.entries(topicNames).map(([k, v]) => <button type="button" data-topic={k} aria-pressed="false">{v}</button>)}
+      </div>
+      <p class="visually-hidden" id="topic-status" aria-live="polite"></p>
+    </div>
+  </header>
+
+  <section class="pubs" aria-label="Papers by year">
+    <div class="wrap">
+      <div class="years">
+        {years.map((y) => (
+          <section class="year" aria-labelledby={`y${y}`}>
+            <h2 class="year__label" id={`y${y}`}>{y}</h2>
+            <ol class="pubs__list">
+              {papers.filter((p) => p.year === y).map((p) => (
+                <li class="pub" data-rise data-topics={p.topics.join(' ')}>
+                  <div class="pub__fig">
+                    <figure class="pfig">
+                      {p.controls && <Fragment set:html={p.controls} />}
+                      <div class="pfig__stage" data-viz={p.viz} {...p.vizAttrs} tabindex="0" role="img" aria-label={p.vizLabel}><canvas aria-hidden="true"></canvas></div>
+                      <figcaption class="pfig__cap">{p.caption}</figcaption>
+                    </figure>
+                  </div>
+                  <div class="pub__text">
+                    <p class="pub__title">{p.url ? <a class="link" href={p.url}>{p.title}</a> : p.title}</p>
+                    <p class="pub__authors">{p.authors.map((a, i) => <>{i > 0 && ', '}{a.self ? <b>{a.name}</b> : a.name}</>)}</p>
+                    <p class="pub__venue"><span class="pub__year">{p.year}</span> · <Fragment set:html={p.venue} /></p>
+                    <p class="pub__tags" aria-label="Topics">{p.topics.map((t) => <a class="pub__tag" href={`#topic=${t}`}>{topicNames[t]}</a>)}</p>
+                    <p class="pub__links">
+                      {p.links.map((l) => <a class="link" href={l.href}>{l.label}</a>)}
+                      {p.status && <span class="pub__status">{p.status}</span>}
+                    </p>
+                    {p.abstract.length > 0 && (
+                      <details class="pub__abs">
+                        <summary>Abstract <svg class="pub__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+                        <div class="pub__abs-body">{p.abstract.map((para) => <p>{para}</p>)}</div>
+                      </details>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="scripts">
+    <script is:inline src="/js/visuals/core.js"></script>
+    {vizScripts.map((v) => <script is:inline src={`/js/visuals/papers/${v}.js`}></script>)}
+    <script is:inline src="/js/visuals/pubs.js"></script>
+    <script is:inline src="/js/abstracts.js"></script>
+    <script is:inline src="/js/topics.js"></script>
+  </Fragment>
+</Base>

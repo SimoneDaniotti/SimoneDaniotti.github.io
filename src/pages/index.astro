@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Simone Daniotti" current="home"
+  description="Simone Daniotti, postdoctoral researcher at the Haas School of Business, UC Berkeley, and Junior Fellow of the Complexity Science Hub Vienna.">
+  <section class="hero" aria-labelledby="name">
+    <div class="wrap">
+      <h1 class="hero__name" id="name" data-rise>{site.name}</h1>
+      <ul class="hero__roles" data-rise style="--d:90ms">
+        {site.roles.map((r) => <li>{r}</li>)}
+      </ul>
+      <p class="hero__fields" data-rise style="--d:140ms">Fields: {site.fields.join(' · ')}</p>
+      <ul class="hero__links" aria-label="Profiles" data-rise style="--d:180ms">
+        <li><a class="link" href={site.scholarUrl}>Google Scholar</a></li>
+        <li><a class="link" href={site.linkedinUrl}>LinkedIn</a></li>
+        <li><a class="link" href="cv.pdf" target="_blank" rel="noopener">CV</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="about" aria-labelledby="about-head">
+    <div class="wrap about__grid">
+      <h2 class="about__head" id="about-head" data-rise>About</h2>
+      <div class="about__body">
+        <p data-rise style="--d:80ms">Since August 2026 I have been a postdoctoral researcher at the Haas School of Business, UC Berkeley, working on AI adoption and what it means for how firms coordinate work internally and for patterns of innovation. I am also a Junior Fellow of the Complexity Science Hub Vienna. My recent work focuses on AI adoption: how generative AI is used to write software across the world and who benefits from it (<a class="link" href="https://doi.org/10.1126/science.adz9311"><em>Science</em>, 2026</a>). I have also studied how American cities developed over almost two centuries (<a class="link" href="https://doi.org/10.1073/pnas.2501504122"><em>PNAS</em>, 2025</a>).</p>
+        <p data-rise style="--d:160ms">I trained as a physicist at the University of Milan, where my master’s thesis used maximum-entropy methods to predict urban mobility, and I worked at Sony Computer Science Laboratories in Paris. I then did a PhD in Computer Science at TU Wien and the Complexity Science Hub Vienna, defended in April 2026, with the thesis <em>Complex Systems of Coordination: Mobility, Economic Networks, and AI</em>, supervised by Frank Neffke, Vito D.P. Servedio, Stefan Thurner and Allan Hanbury.</p>
+        <p data-rise style="--d:240ms">Along the way I was a Research Fellow at the Harvard Growth Lab and a researcher at the Copernicus Institute of Sustainable Development, Utrecht University, with Koen Frenken, where I also taught and coordinated the MSc course Data Analytics for Sustainability. Other work looks at delay cascades in railway networks and at where shared cars park.</p>
+      </div>
+    </div>
+  </section>
+</Base>

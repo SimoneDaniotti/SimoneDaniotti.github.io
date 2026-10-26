@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  current?: 'home' | 'publications' | 'teaching';
+}
+const { title, description, current = 'home' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href={canonical}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={canonical}>
+<script is:inline>
+  /* apply a remembered theme before first paint */
+  (function () { var d = document.documentElement; d.className = 'js';
+    try { var q = /[?&]theme=(light|dark)/.exec(location.search); var t = q ? q[1] : localStorage.getItem('sd-theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t); } catch (e) {} })();
+</script>
+<link rel="preload" href="/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/schibsted-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<Nav current={current} />
+<main id="main">
+  <slot />
+</main>
+<Footer />
+<script is:inline src="/js/theme.js"></script>
+<slot name="scripts" />
+<script is:inline>
+  /* entrances: once, as each part enters */
+  (function () {
+    var els = document.querySelectorAll('[data-rise]');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { els.forEach(function (el) { el.classList.add('is-in'); }); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+</body>
+</html>

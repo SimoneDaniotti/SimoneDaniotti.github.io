@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import teaching from '../data/teaching.json';
+type Course = { institution: string; course: string; where?: string; role: string; terms: string; note?: string };
+const courses = teaching as Course[];
+---
+<Base title="Teaching · Simone Daniotti" current="teaching"
+  description="Teaching by Simone Daniotti: Data Analytics for Sustainability (Utrecht University), CSH Winter School, Modelling and Simulation.">
+  <header class="page-head">
+    <div class="wrap">
+      <h1 class="page-head__title" data-rise>Teaching</h1>
+    </div>
+  </header>
+
+  <div class="teach">
+    <div class="wrap">
+      {courses.map((c, i) => (
+        <section class="inst" aria-labelledby={`course-${i}`}>
+          <p class="inst__name" data-rise>{c.institution}</p>
+          <div class="inst__courses">
+            <article class="course" data-rise style="--d:80ms">
+              <h2 class="course__name" id={`course-${i}`}>{c.course}</h2>
+              {c.where && <p class="course__where">{c.where}</p>}
+              <p class="course__role">{c.role} <span class="course__terms">· {c.terms}</span></p>
+              {c.note && <p class="course__note">{c.note}</p>}
+            </article>
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</Base>
