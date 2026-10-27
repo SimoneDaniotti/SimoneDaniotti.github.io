@@ -69,7 +69,7 @@ jobs:
             echo "Using the CV compiled from Overleaf"
           fi
 
-      - uses: withastro/action@56781b97402ce0487b7e61ce2cb960c0e2cc5289 # v3.0.2
+      - uses: withastro/action@a8b97df764791eb61fbf3338ef713b0e61ae05c5 # v6.1.4
         with:
           node-version: 24
 
