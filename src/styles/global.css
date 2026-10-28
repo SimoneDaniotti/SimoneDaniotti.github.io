@@ -244,6 +244,31 @@ a { color: inherit; }
 .hero__links { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 4px 28px; }
 .hero__links a { display: inline-block; padding: 8px 0; }
 
+/* portrait beside the name (owner's choice, option A of task #21) */
+.hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(240px, 24vw, 346px);
+  column-gap: clamp(24px, 3.5vw, 48px); /* keeps the first role on one line at 1440 */
+  align-items: center;
+}
+.ph { display: block; }
+.ph img {
+  display: block; width: 100%; height: auto;
+  background: var(--surface);
+  /* a hairline in the ink colour seats the studio blue on the page ground */
+  outline: 1px solid color-mix(in srgb, var(--ink) 10%, transparent); outline-offset: -1px;
+}
+.hero__photo img { border-radius: 4px; aspect-ratio: 4 / 5; }
+/* dark ground: take a little glare out of the photo; no filter beyond this */
+:root[data-theme="dark"] .ph img { filter: brightness(0.9) saturate(0.92); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ph img { filter: brightness(0.9) saturate(0.92); }
+}
+@media (max-width: 640px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .hero__photo { order: -1; width: 192px; margin-bottom: 28px; }
+}
+
 /* ---------- about ---------- */
 .about { padding-top: var(--section); padding-bottom: var(--section); }
 .about__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); column-gap: var(--gap); }

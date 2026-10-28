@@ -5,7 +5,8 @@ import { site } from '../data/site';
 <Base title="Simone Daniotti" current="home"
   description="Simone Daniotti, postdoctoral researcher at the Haas School of Business, UC Berkeley, and Junior Fellow of the Complexity Science Hub Vienna.">
   <section class="hero" aria-labelledby="name">
-    <div class="wrap">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
       <h1 class="hero__name" id="name" data-rise>{site.name}</h1>
       <ul class="hero__roles" data-rise style="--d:90ms">
         {site.roles.map((r) => <li>{r}</li>)}
@@ -16,6 +17,11 @@ import { site } from '../data/site';
         <li><a class="link" href={site.linkedinUrl}>LinkedIn</a></li>
         <li><a class="link" href="cv.pdf" target="_blank" rel="noopener">CV</a></li>
       </ul>
+      </div>
+      <picture class="ph hero__photo" data-rise style="--d:120ms">
+        <source srcset="images/simone-daniotti.webp" type="image/webp">
+        <img src="images/simone-daniotti.jpg" width="600" height="750" alt="Portrait of Simone Daniotti" decoding="async" fetchpriority="high">
+      </picture>
     </div>
   </section>
 
