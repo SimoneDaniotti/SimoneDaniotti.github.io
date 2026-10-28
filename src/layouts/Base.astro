@@ -43,6 +43,7 @@ const person = {
 <meta property="og:type" content="website">
 <meta property="og:url" content={canonical}>
 <meta property="og:image" content={ogImage}>
+{current === 'home' && <meta name="google-site-verification" content="7v1DdEREG4Izn9jVHEUcxdVd0pOzqttLFkezoxjHUTQ">}
 {current === 'home' && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
 <script is:inline>
   /* apply a remembered theme before first paint */
