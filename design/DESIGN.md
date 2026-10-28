@@ -5,7 +5,7 @@ Derived from the shipped mockup in `design/v2/` (`style.css`, `theme.js`, `abstr
 
 ## 1. Character
 Calm, plain, typographic academic site in the spirit of mathijsdv.com. Light ground, one centred column,
-a serif voice for names and titles, a grotesk for everything else, one deep-red accent. No photographs
+a serif voice for names and titles, a grotesk for everything else, one blue accent (the studio blue of the owner’s portrait, sampled `#386eaa`; Oct 2026, replaced the deep red). No photographs
 (the owner chose none). The paper figures are the only "live" element: small canvas animations
 that explain each paper's idea and respond to the cursor.
 
@@ -15,26 +15,27 @@ All colours live on `:root`. Dark values apply under `@media (prefers-color-sche
 
 | Token | Light | Dark | Role |
 |---|---|---|---|
-| `--bg` | `#f6f5f5` | `#151213` | page ground (neutral, very slightly rosy; not cream) |
-| `--surface` | `#ece9e9` | `#1e1a1b` | one tone step: footer band, chip/button rest, hover fills |
-| `--ink` | `#1b1617` | `#eee8e6` | all running text, headings, active chip fill |
-| `--ink-soft` | `#5a5052` | `#b3a8a9` | secondary: co-authors, captions, terms, year labels on phone, tags |
-| `--accent` | `#7d0c14` | `#b8222d` | deep red: timeline dot on hover/focus; reserved for a single primary action if one returns |
-| `--accent-hover` | `#5e0910` | `#cf3540` | hover state of accent fills |
-| `--accent-ink` | `#fbf8f7` | `#fff8f7` | text on accent |
-| `--link` | `#7d0c14` | `#f08a90` | text links (DOI, profiles, footer) |
-| `--focus` | `#7d0c14` | `#f08a90` | focus ring |
-| `--selection` | `#e9cdd0` | `#5a1a20` | `::selection` background (text stays `--ink`) |
-| `--viz-field` | `#ebe7e7` | `#221d1e` | figure background |
-| `--viz-ink` | `#2a2224` | `#e6dfdd` | figure marks; mid = 55 %, dim = 26 % alpha of it |
-| `--viz-hot` | `#7d0c14` | `#d9404b` | figure highlight (the thing the paper is about) |
-| `--viz-hot-ink` | `#fbf8f7` | `#fff8f7` | marks drawn on top of `--viz-hot` |
+| `--bg` | `#f5f6f7` | `#121417` | page ground (neutral, very slightly cool; not cream) |
+| `--surface` | `#e9ecef` | `#1b1e22` | one tone step: footer band, chip/button rest, hover fills |
+| `--ink` | `#15181c` | `#e7eaee` | all running text, headings, active chip fill |
+| `--ink-soft` | `#4f5660` | `#a7aeb8` | secondary: co-authors, captions, terms, year labels on phone, tags |
+| `--accent` | `#386eaa` | `#5a90cf` | the photo blue: timeline dot on hover/focus; reserved for a single primary action if one returns |
+| `--accent-hover` | `#2a5f9c` | `#77a6dc` | hover state of accent fills |
+| `--accent-ink` | `#f8fafc` | `#0e1114` | text on accent |
+| `--link` | `#245a96` | `#8ab6e8` | text links (DOI, profiles, footer) |
+| `--focus` | `#245a96` | `#8ab6e8` | focus ring |
+| `--selection` | `#cfdcec` | `#1f3a5a` | `::selection` background (text stays `--ink`) |
+| `--viz-field` | `#e8ebee` | `#1c1f24` | figure background |
+| `--viz-ink` | `#22262b` | `#e2e6ea` | figure marks; mid = 55 %, dim = 26 % alpha of it |
+| `--viz-hot` | `#386eaa` | `#5a90cf` | figure highlight (the thing the paper is about) |
+| `--viz-hot-ink` | `#f8fafc` | `#f8fafc` | marks drawn on top of `--viz-hot` |
 
 `--viz-node / --viz-edge / --viz-on / --viz-edge-on` belong to the retired home-page network
 (`visuals/diffusion.js`, no longer loaded); keep them only if that visual returns.
 
 Rules: one accent; running text always full `--ink`; surfaces separated by a tone step, never a border
-or shadow; the red appears on links, the active highlight in figures and the timeline dot, nowhere decorative.
+or shadow; the blue appears on links, the active highlight in figures and the timeline dot, nowhere decorative.
+Contrast (WCAG): light — ink 16.5, ink-soft 6.9 (6.3 on surface), link 6.5 (6.0 on surface); dark — ink 15.3, ink-soft 8.3 (7.5), link 8.7 (7.9). The photo blue itself is 4.9:1 on the light ground, so it is safe for figure marks.
 
 ## 3. Type
 - Families (Google Fonts): **Newsreader** (opsz 6–72; 400, 500, italic 400) for display/serif roles;

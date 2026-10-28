@@ -274,7 +274,7 @@
   "vizAttrs": {},
   "vizLabel": "Two qubits drawn as phase dials, kicked by random telegraph noise. Moving left or right changes how unbalanced the noise is. Arrow keys move the pointer.",
   "controls": null,
-  "caption": "Move left or right to unbalance the noise. The red line shows how correlated the two phases stay. Click to run a teleportation; fidelity rises as the noise becomes unbalanced (values illustrative).",
+  "caption": "Move left or right to unbalance the noise. The blue line shows how correlated the two phases stay. Click to run a teleportation; fidelity rises as the noise becomes unbalanced (values illustrative).",
   "links": [
    {
     "href": "https://doi.org/10.1140/epjd/e2018-90450-x",
