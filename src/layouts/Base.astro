@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
 
 interface Props {
   title: string;
@@ -9,7 +10,24 @@ interface Props {
   current?: 'home' | 'publications' | 'teaching';
 }
 const { title, description, current = 'home' } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+// the home page's public address is the bare domain, not /index.html
+const path = Astro.url.pathname.replace(/(^|\/)index(\.html)?$/, '$1');
+const canonical = new URL(path, Astro.site);
+const ogImage = new URL('images/simone-daniotti.jpg', Astro.site);
+// structured data so search engines can tie the site to the person and the profiles
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: new URL('/', Astro.site).href,
+  image: ogImage.href,
+  jobTitle: 'Postdoctoral Researcher',
+  affiliation: [
+    { '@type': 'Organization', name: 'Haas School of Business, UC Berkeley' },
+    { '@type': 'Organization', name: 'Complexity Science Hub Vienna' },
+  ],
+  sameAs: [site.scholarUrl, site.linkedinUrl, 'https://orcid.org/0009-0009-5974-9490', 'https://github.com/SimoneDaniotti'],
+};
 ---
 <!doctype html>
 <html lang="en">
@@ -24,6 +42,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:description" content={description}>
 <meta property="og:type" content="website">
 <meta property="og:url" content={canonical}>
+<meta property="og:image" content={ogImage}>
+{current === 'home' && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
 <script is:inline>
   /* apply a remembered theme before first paint */
   (function () { var d = document.documentElement; d.className = 'js';
