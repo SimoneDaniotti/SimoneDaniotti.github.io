@@ -16,11 +16,11 @@ const years = [...new Set(papers.map((p) => p.year))];
 const vizScripts = [...new Set(papers.map((p) => p.viz))];
 ---
 <Base title="Publications · Simone Daniotti" current="publications"
-  description="Publications by Simone Daniotti, newest first: generative AI and software, the coherence of US cities, railway delay cascades, car-sharing and quantum noise.">
+  description="Publications by Simone Daniotti on generative AI and software development, the coherence of US cities, the global division of labor in software, railway delay cascades and car-sharing.">
   <header class="page-head">
     <div class="wrap">
       <h1 class="page-head__title" data-rise>Publications</h1>
-      <div class="topics" role="group" aria-label="Filter by topic" hidden>
+      <div class="topics" data-nosnippet role="group" aria-label="Filter by topic" hidden>
         <button type="button" data-topic="all" aria-pressed="true">All</button>
         {Object.entries(topicNames).map(([k, v]) => <button type="button" data-topic={k} aria-pressed="false">{v}</button>)}
       </div>
@@ -33,7 +33,7 @@ const vizScripts = [...new Set(papers.map((p) => p.viz))];
       <div class="years">
         {years.map((y) => (
           <section class="year" aria-labelledby={`y${y}`}>
-            <h2 class="year__label" id={`y${y}`}>{y}</h2>
+            <h2 class="year__label" id={`y${y}`}><span data-nosnippet>{y}</span></h2>
             <ol class="pubs__list">
               {papers.filter((p) => p.year === y).map((p) => (
                 <li class="pub" data-rise data-topics={p.topics.join(' ')}>
@@ -48,7 +48,7 @@ const vizScripts = [...new Set(papers.map((p) => p.viz))];
                     <p class="pub__title">{p.url ? <a class="link" href={p.url}>{p.title}</a> : p.title}</p>
                     <p class="pub__authors">{p.authors.map((a, i) => <>{i > 0 && ', '}{a.self ? <b>{a.name}</b> : a.name}</>)}</p>
                     <p class="pub__venue"><span class="pub__year">{p.year}</span> · <Fragment set:html={p.venue} /></p>
-                    <p class="pub__tags" aria-label="Topics">{p.topics.map((t) => <a class="pub__tag" href={`#topic=${t}`}>{topicNames[t]}</a>)}</p>
+                    <div class="pub__tags" data-nosnippet aria-label="Topics">{p.topics.map((t) => <a class="pub__tag" href={`#topic=${t}`}>{topicNames[t]}</a>)}</div>
                     <p class="pub__links">
                       {p.links.map((l) => <a class="link" href={l.href}>{l.label}</a>)}
                       {p.status && <span class="pub__status">{p.status}</span>}
