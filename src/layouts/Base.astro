@@ -15,6 +15,13 @@ const path = Astro.url.pathname.replace(/(^|\/)index(\.html)?$/, '$1');
 const canonical = new URL(path, Astro.site);
 const ogImage = new URL('images/simone-daniotti.jpg', Astro.site);
 // structured data so search engines can tie the site to the person and the profiles
+// tells Google the site's name, instead of guessing it from the github.io address
+const website = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.name,
+  url: new URL('/', Astro.site).href,
+};
 const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -38,12 +45,18 @@ const person = {
 <meta name="description" content={description}>
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href={canonical}>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
 <meta property="og:type" content="website">
+<meta property="og:site_name" content={site.name}>
 <meta property="og:url" content={canonical}>
 <meta property="og:image" content={ogImage}>
 {current === 'home' && <meta name="google-site-verification" content="7v1DdEREG4Izn9jVHEUcxdVd0pOzqttLFkezoxjHUTQ">}
+{current === 'home' && <script type="application/ld+json" set:html={JSON.stringify(website)} />}
 {current === 'home' && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
 <script is:inline>
   /* apply a remembered theme before first paint */
